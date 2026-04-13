@@ -1,1 +1,1 @@
-# Evidencia kníh a filmov
+# Evidencia a databáza kníh
