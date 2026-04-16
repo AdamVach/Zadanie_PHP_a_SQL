@@ -11,20 +11,19 @@
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
     }
-    $sql = "CREATE DATABASE IF NOT EXISTS pozivatelia;
+    $sql = "CREATE DATABASE IF NOT EXISTS pouzivatelia;
     USE pouzivatelia;
-    CREATE TABLE IF NOT EXISTS user (
+    CREATE TABLE IF NOT EXISTS pouzivatel (
         pouzivatel_ID INT(6) AUTO_INCREMENT PRIMARY KEY,
         meno VARCHAR(30) NOT NULL,
-        priezvisko VARCHAR(30) NOT NULL,
         email VARCHAR(50) NOT NULL,
         heslo VARCHAR(255) NOT NULL
     );
     INSERT INTO pouzivatel (id, meno, priezvisko, email) VALUES
-    (NULL, 'Ján', 'Novák', 'jan.novak@example.com'),
-    (NULL, 'Petra', 'Kováčová', 'petra.kovacova@example.com'),
-    (NULL, 'Martin', 'Horváth', 'martin.horvath@example.com'),
-    (NULL, 'Lucia', 'Vargová', 'lucia.vargova@example.com');
+    (NULL, 'Ján', 'jan.novak@example.com', password_hash('heslo123', PASSWORD_DEFAULT)),
+    (NULL, 'Petra', 'petra.kovacova@example.com', password_hash('tajneheslo', PASSWORD_DEFAULT)),
+    (NULL, 'Martin', 'martin.horvath@example.com', password_hash('mojeheslo', PASSWORD_DEFAULT)),
+    (NULL, 'Lucia', 'lucia.vargova@example.com', password_hash('superheslo', PASSWORD_DEFAULT)),;
 
     CREATE TABLE IF NOT EXISTS knihy (
         kniha_ID INT(6) AUTO_INCREMENT PRIMARY KEY,
