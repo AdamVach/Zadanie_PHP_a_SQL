@@ -64,7 +64,7 @@
     <hr class="my-3">
 
     <div class="text-center">
-      <a href="17auth.php" class="text-decoration-none">Už máte účet? Prihláste sa</a>
+      <a href="index.php" class="text-decoration-none">Už máte účet? Prihláste sa</a>
 
     </div>
 

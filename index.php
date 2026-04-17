@@ -8,7 +8,7 @@
 <body class="bg-light">
 <?php
 include "Databaza.php";
-$conn = mysqli_connect("localhost", "root", "root", "pouzivatelia");
+$conn = mysqli_connect("localhost", "root", "root", "databaza_knih");
 if (!$conn) {
     echo "chyba pripojenia" . mysqli_connect_error();
     die();
@@ -52,9 +52,7 @@ if (!$conn) {
                 <input type="password" class="form-control" id="password" name="password" placeholder="Zadaj heslo">
             </div>
             <?php
-            if(!isset($_COOKIE["logged"])) {
-                echo '<button type="submit" name="login" class="btn btn-primary w-100">Prihlásiť sa</button>';
-            }
+            echo '<button type="submit" name="login" class="btn btn-primary w-100">Prihlásiť sa</button>';
             ?>
             <a href="register.php">registrovať sa</a>
             <a href="reset_password.php">Zabudnuté heslo</a>

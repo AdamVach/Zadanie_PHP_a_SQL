@@ -65,10 +65,7 @@
         $defaultBooksSql = "INSERT INTO knihy (nazov, autor, rok_vydania) VALUES
             ('Na západe nič nové', 'Erich Maria Remarque', 1929),
             ('1984', 'George Orwell', 1949),
-            ('Malý princ', 'Antoine de Saint-Exupéry', 1943),
-            ('Pýcha a predsudok', 'Jane Austen', 1813),
-            ('Zločin a trest', 'Fjodor Michajlovič Dostojevskij', 1866);";
-        mysqli_query($conn, $defaultBooksSql);
+            ('Malý princ', 'Antoine de Saint-Exupéry', 1943);";
         if (!mysqli_query($conn, $defaultBooksSql)) {
             die("Error inserting default books: " . mysqli_error($conn));
         }
