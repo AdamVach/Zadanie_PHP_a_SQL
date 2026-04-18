@@ -7,6 +7,7 @@
 </head>
 <body class="bg-light">
 <?php
+session_start();
 include "Databaza.php";
 $conn = mysqli_connect("localhost", "root", "root", "databaza_knih");
 if (!$conn) {
@@ -28,6 +29,7 @@ if (!$conn) {
                 $result = mysqli_query($conn, $sql);
                 while ($row = mysqli_fetch_assoc($result)) {
                     if($_POST["username"] == $row["meno"] && password_verify($_POST["password"], $row["heslo"])) {
+                        $_SESSION["meno"] = $row["meno"];
                         setcookie("logged", "1", time()+3600);
                         $_COOKIE["logged"] = "1";
                         header("Location: Zadanie_PHP_a_SQL.php");

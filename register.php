@@ -9,15 +9,16 @@
 
 <body class="bg-light">
   <?php
-  $conn = mysqli_connect("localhost", "root", "root", "pouzivatelia");
+  $conn = mysqli_connect("localhost", "root", "root", "databaza_knih");
 
   if(!$conn){
     echo "Chyba pripojenia" . mysqli_connect_error();
   }
   if (isset($_POST["register"])) {
-    $username = $_POST["username"];
-    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
-    $sql = "INSERT INTO pouzivatel (meno, heslo) VALUES ('$username', '$password')";
+    $meno = $_POST["meno"];
+    $email = $_POST["email"];
+    $heslo = password_hash($_POST["helso"], PASSWORD_DEFAULT);
+    $sql = "INSERT INTO pouzivatel (meno, email, heslo) VALUES ('$meno', '$email', '$heslo')";
     mysqli_query($conn, $sql);
   }
 ?>
@@ -30,12 +31,17 @@
       <form method="post">
         <div class="mb-3">
           <label class="form-label">Používateľské meno</label>
-          <input type="text" class="form-control" name="username" required>
+          <input type="text" class="form-control" name="meno" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control" name="email" required>
         </div>
 
         <div class="mb-3">
           <label class="form-label">Heslo</label>
-          <input type="password" class="form-control" name="password" required>
+          <input type="password" class="form-control" name="heslo" required>
         </div>
 
         <button type="submit" name="register" class="btn btn-primary w-100">
@@ -43,12 +49,14 @@
         </button>
       </form>
       <?php
+      session_start();
         if(isset($_POST["register"])) {
-            if(isset($_POST["username"]) && isset($_POST["password"])){
+            if(isset($_POST["meno"]) && isset($_POST["heslo"])){
                 $sql = "SELECT * FROM pouzivatel";
                 $result = mysqli_query($conn, $sql);
                 while ($row = mysqli_fetch_assoc($result)) {
-                    if($_POST["username"] == $row["meno"] && password_verify($_POST["password"], $row["heslo"])) {
+                    if($_POST["meno"] == $row["meno"] && password_verify($_POST["heslo"], $row["heslo"])) {
+                        $_SESSION["meno"] = $row["meno"];
                         setcookie("logged", "1", time()+3600);
                         $_COOKIE["logged"] = "1";
 

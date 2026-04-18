@@ -11,6 +11,7 @@
 </head>
 
 <body class="p-3 m-0 border-0 bd-example m-0 border-0">
+  <!-- Header -->
   <header class="p-3 mb-3 border-bottom">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -36,18 +37,19 @@
             </svg>
           </a>
           <ul class="dropdown-menu text-small">
-            <li><a class="dropdown-item" href="#">New project...</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><a class="dropdown-item" href="zmena_hesla.php">Zmena hesla</a></li>
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="index.php">Sign out</a></li>
+            <li><a class="dropdown-item" href="index.php">Odhlásiť sa</a></li>
           </ul>
         </div>
       </div>
     </div>
   </header>
+  <!-- Header -->
+  <!-- Main content -->
+  <!-- Výber kníh z databázy -->
   <div class="container">
     <div class="row g-4 justify-content-center align-items-start">
       <div class="col-12 col-lg-6">
@@ -71,7 +73,9 @@
           </form>
         </div>
       </div>
+      <!-- Výber kníh z databázy -->
 
+      <!-- Registrácia kníh -->
       <div class="col-12 col-lg-6">
         <div class="card shadow p-4 h-100">
           <h3 class="text-center mb-3">Registrácia kníh</h3>
@@ -95,6 +99,9 @@
       </div>
     </div>
   </div>
+  <!-- Registrácia kníh -->
+  <!-- Main content -->
+  <!-- Footer -->
   <div class="container">
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
       <div class="col-md-4 d-flex align-items-center">
@@ -120,6 +127,7 @@
       </ul>
     </footer>
   </div>
+  <!-- Footer -->
 </body>
 
 </html>
