@@ -37,6 +37,7 @@ if (!$conn) {
                         break;
                     } else {
                         echo '<div class="alert alert-danger" role="alert">Neplatné meno alebo heslo, alebo nie ste registrovaný</div>';
+                        break;
                     }
                 }
             }
@@ -57,7 +58,6 @@ if (!$conn) {
             echo '<button type="submit" name="login" class="btn btn-primary w-100">Prihlásiť sa</button>';
             ?>
             <a href="register.php">registrovať sa</a>
-            <a href="reset_password.php">Zabudnuté heslo</a>
         </form>
 
         

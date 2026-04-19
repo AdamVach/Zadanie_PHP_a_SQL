@@ -56,7 +56,8 @@
         <div class="card shadow p-4 h-100">
           <h3 class="text-center mb-3">Výber kníh z databázy</h3>
           <p class="text-left mb-3">Ak chcete zistiť či sa kniha vášho výberu nachádza
-            v našej databáze alebo si ju chcete prečítať jednoducho zadajte jej názov do vyhľadávania
+            v našej databáze alebo si ju chcete prečítať jednoducho zadajte jej názov, autora alebo rok vydania do
+            vyhľadávania
             a kliknite na tlačidlo "Výber knihy".</p>
           </p>
 
@@ -71,6 +72,22 @@
               <button type="submit" name="odoslanie_vyberu" class="btn btn-primary w-100">Výber knihy</button>
             </div>
           </form>
+          <?php //Výber kníh
+          if (isset($_POST["odoslanie_vyberu"])) {
+            if (isset($_POST["vyber_knihy"])) {
+              $kniha = $_POST["vyber_knihy"];
+              $conn = mysqli_connect("localhost", "root", "root", "databaza_knih");
+              if (!$conn) {
+                die("Connection failed: " . mysqli_connect_error());
+              }
+              $sql = "SELECT nazov, autor, rok_vydania FROM knihy WHERE nazov = '$kniha' OR autor = '$kniha' OR rok_vydania = '$kniha' ORDER BY nazov ASC;";
+              $result = mysqli_query($conn, $sql);
+              while ($pole_knih = mysqli_fetch_assoc($result)) {
+                echo implode(" ", $pole_knih) . "<br>";
+              }
+            }
+          }
+          ?>
         </div>
       </div>
       <!-- Výber kníh z databázy -->
@@ -86,9 +103,21 @@
 
           <form method="post">
             <div class="mb-3">
-              <label for="registracia_knihy" class="form-label">Zaregistrujte knihu</label>
+              <label for="registracia_knihy" class="form-label">Názov knihy</label>
               <input type="text" class="form-control" id="registracia_knihy" name="registracia_knihy"
                 placeholder="Zadajte názov knihy">
+            </div>
+
+            <div class="mb-3">
+              <label for="registracia_knihy" class="form-label">Autor knihy</label>
+              <input type="text" class="form-control" id="autor_knihy" name="autor_knihy"
+                placeholder="Zadajte autora knihy">
+            </div>
+
+            <div class="mb-3">
+              <label for="registracia_knihy" class="form-label">Rok vydania knihy</label>
+              <input type="text" class="form-control" id="rok_knihy" name="rok_knihy"
+                placeholder="Zadajte rok vydania knihy">
             </div>
 
             <div class="mb-3">
