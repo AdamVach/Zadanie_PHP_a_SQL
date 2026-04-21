@@ -13,7 +13,7 @@
 ### Zmena hesla
 - Po kliknutí na "Zmena hesla" je používateľ presmerovaný na stránku so zemnou hesla (zmena_hesla.php)
 - Používateľ músí zadať aktuálne heslo, a nové heslo dvakrát (používateľské meno je uložené v SESSION na serveri)
-- Po zmene hesla je používateľ presmerovaný späť na stránku s registráciou a výberom kníh (Zadanie_PHP_a_SQL)
+- Po zmene hesla je používateľ presmerovaný späť na stránku s registráciou a výberom kníh (Zadanie_PHP_a_SQL.php)
 ### Vymazanie účtu
 - Po kliknutí na "Vymazať účet" je používateľ presmerovaný na stránku vymazania účtu (account_delete.php)
 - Ak používateľ potvrdí vymazanie, účet sa vymaže a používateľ je presmerovaný na login stránku (index.php)
