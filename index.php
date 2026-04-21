@@ -30,8 +30,9 @@ if (!$conn) {
                 while ($row = mysqli_fetch_assoc($result)) {
                     if($_POST["username"] == $row["meno"] && password_verify($_POST["password"], $row["heslo"])) {
                         $_SESSION["meno"] = $row["meno"];
-                        setcookie("logged", "1", time()+3600);
+                        setcookie("logged", "1", time()+3600*24);
                         $_COOKIE["logged"] = "1";
+                        mysqli_close($conn);
                         header("Location: Zadanie_PHP_a_SQL.php");
                         exit();
                         break;

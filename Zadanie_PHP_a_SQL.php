@@ -41,7 +41,7 @@
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="index.php">Odhlásiť sa</a></li>
+            <li><a class="dropdown-item" href="logout.php">Odhlásiť sa</a></li>
           </ul>
         </div>
       </div>
@@ -124,6 +124,28 @@
               <button type="submit" name="register_knihy" class="btn btn-primary w-100">Registrovať knihu</button>
             </div>
           </form>
+          <?php //Registrácia kníh
+          if (isset($_POST["register_knihy"])) {
+            if (isset($_POST["registracia_knihy"]) && isset($_POST["autor_knihy"]) && isset($_POST["rok_knihy"])) {
+              $kniha = $_POST["registracia_knihy"];
+              $autor = $_POST["autor_knihy"];
+              $rok_vydania = $_POST["rok_knihy"];
+              $conn = mysqli_connect("localhost", "root", "root", "databaza_knih");
+              if (!$conn) {
+                die("Connection failed: " . mysqli_connect_error());
+              }
+              $sql = "INSERT INTO knihy (nazov, autor, rok_vydania) VALUES ('$kniha', '$autor', '$rok_vydania');";
+              $result = mysqli_query($conn, $sql);
+              
+              if ($result) {
+                echo '<div class="alert alert-success" role="alert">Kniha bola úspešne zaregistrovaná</div>';
+              } else {
+                echo "Knihu sa nepodarilo zaregistrovať";
+                die("Query failed: " . mysqli_error($conn));
+              }
+            }
+          }
+          ?>
         </div>
       </div>
     </div>

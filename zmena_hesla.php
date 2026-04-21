@@ -8,13 +8,6 @@
 </head>
 
 <body class="bg-light">
-    <?php
-    $conn = mysqli_connect("localhost", "root", "root", "databaza_knih");
-    if (!$conn) {
-        echo "chyba pripojenia" . mysqli_connect_error();
-        die();
-    }
-    ?>
 
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="card shadow p-4" style="max-width: 400px; width: 100%;">
@@ -41,22 +34,31 @@
                 </div>
 
                 <div class="mb-3">
-                    <button type="submit" name="login" class="btn btn-primary w-100">Zmeniť heslo</button>
+                    <button type="submit" name="submit" class="btn btn-primary w-100">Zmeniť heslo</button>
                 </div>
 
             </form>
             <?php
-            $heslo_stare = password_hash($_POST["password_now"], PASSWORD_DEFAULT);
-            $heslo_nove1 = password_hash($_POST["password_new1"], PASSWORD_DEFAULT);
-            $heslo_nove2 = password_hash($_POST["password_new2"], PASSWORD_DEFAULT);
-            $pouzivatel = $_SESSION["meno"];
+            session_start();
             if (isset($_POST["submit"])) {
+                $conn = mysqli_connect("localhost", "root", "root", "databaza_knih");
+                if (!$conn) {
+                    echo "chyba pripojenia" . mysqli_connect_error();
+                    die();
+                }
+                $heslo_stare = password_hash($_POST["password_now"], PASSWORD_DEFAULT);
+                $heslo_nove1 = $_POST["password_new1"];
+                $heslo_nove2 = $_POST["password_new2"];
+                $pouzivatel = $_SESSION["meno"];
                 if ($heslo_nove1 == $heslo_nove2) {
-                    $sql = "SELECT heslo FROM pouzivatel UPDATE pouzivatel SET heslo = '$heslo_nove2' WHERE meno = '$pouzivatel';";
+                    $heslo_nove1 = password_hash($_POST["password_new1"], PASSWORD_DEFAULT);
+                    $heslo_nove2 = password_hash($_POST["password_new2"], PASSWORD_DEFAULT);
+                    $sql = "UPDATE pouzivatel SET heslo = '$heslo_nove2' WHERE meno = '$pouzivatel';";
                     $result = mysqli_query($conn, $sql);
                     if (!$result) {
                         die("Query failed: " . mysqli_error($conn));
                     }
+                    mysqli_close($conn);
                     header("Location: Zadanie_PHP_a_SQL.php");
                     exit();
                 } else {
