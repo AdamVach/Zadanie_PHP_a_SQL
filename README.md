@@ -27,6 +27,6 @@
 ## Registrácia kníh
 - Ak používateľ knihu nenájde môže ju registrovať
 - Pre registráciu sú tri samostatné inputy, do ktorých používateľ vkladá "Názov knihy", "Autora knihy" a "Rok vydania knihy"
-> [!WARNING]
+> [!Upozornenie]
 > Vložené údaje sa nekontrolujú
 - Po vložení sa vypíše oznámenie o tom, že kniha bola registrovaná, ak registrácia neprebehne úspešne vypíše sa oznámenie o tom, že sa tak stalo
