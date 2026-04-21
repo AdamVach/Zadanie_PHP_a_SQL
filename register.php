@@ -17,7 +17,7 @@
   if (isset($_POST["register"])) {
     $meno = $_POST["meno"];
     $email = $_POST["email"];
-    $heslo = password_hash($_POST["helso"], PASSWORD_DEFAULT);
+    $heslo = password_hash($_POST["heslo"], PASSWORD_DEFAULT);
     $sql = "INSERT INTO pouzivatel (meno, email, heslo) VALUES ('$meno', '$email', '$heslo')";
     mysqli_query($conn, $sql);
     session_start();

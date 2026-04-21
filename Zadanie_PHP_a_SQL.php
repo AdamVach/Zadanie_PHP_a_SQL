@@ -38,8 +38,9 @@
           </a>
           <ul class="dropdown-menu text-small">
             <li><a class="dropdown-item" href="zmena_hesla.php">Zmena hesla</a></li>
+            <li><a class="dropdown-item" href="account_delete.php">Vymazať účet</a></li>
             <li>
-              <hr class="dropdown-divider">
+            <hr class="dropdown-divider">
             </li>
             <li><a class="dropdown-item" href="logout.php">Odhlásiť sa</a></li>
           </ul>
@@ -136,7 +137,7 @@
               }
               $sql = "INSERT INTO knihy (nazov, autor, rok_vydania) VALUES ('$kniha', '$autor', '$rok_vydania');";
               $result = mysqli_query($conn, $sql);
-              
+
               if ($result) {
                 echo '<div class="alert alert-success" role="alert">Kniha bola úspešne zaregistrovaná</div>';
               } else {
